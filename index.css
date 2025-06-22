@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --primary: hsl(142, 100%, 50%);
+  --primary-foreground: hsl(222, 84%, 5%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 91%, 60%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --warning: hsl(38, 92%, 50%);
+  --ring: hsl(217, 32%, 17%);
+  --radius: 0.5rem;
+  --chart-1: hsl(142, 100%, 50%);
+  --chart-2: hsl(217, 91%, 60%);
+  --chart-3: hsl(38, 92%, 50%);
+  --chart-4: hsl(0, 62%, 30%);
+  --chart-5: hsl(217, 32%, 17%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --primary: hsl(142, 100%, 50%);
+  --primary-foreground: hsl(222, 84%, 5%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 91%, 60%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --warning: hsl(38, 92%, 50%);
+  --ring: hsl(217, 32%, 17%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Custom styles for terminal */
+.terminal-output {
+  @apply font-mono text-sm;
+}
+
+.terminal-output .command {
+  @apply text-muted-foreground;
+}
+
+.terminal-output .success {
+  @apply text-primary;
+}
+
+.terminal-output .error {
+  @apply text-destructive;
+}
+
+.terminal-output .info {
+  @apply text-accent;
+}
+
+.terminal-output .warning {
+  color: hsl(38, 92%, 50%);
+}
+
+/* Improve touch targets for mobile */
+button, input, [role="button"] {
+  min-height: 44px;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  accent-color: hsl(142, 100%, 50%);
+}
+
+/* Tool panel styles */
+.tool-panel {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+}
+
+.tool-panel.hidden {
+  display: none;
+}
+
+/* Status indicator animation */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-pulse {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+/* Mobile optimization */
+@media (max-width: 640px) {
+  .tool-panel {
+    height: calc(100vh - 100px);
+  }
+}
